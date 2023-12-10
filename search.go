@@ -45,6 +45,7 @@ type SearchRequest struct {
 	Track        string // search track titles
 	Submitter    string // search submitter username
 	Contributor  string // search contributor usernames
+	Sort         string // search sort
 
 	Page    int
 	PerPage int
@@ -110,6 +111,9 @@ func (r *SearchRequest) params() url.Values {
 	}
 	if r.Contributor != "" {
 		params.Set("contributor", r.Contributor)
+	}
+	if r.Sort != "" {
+		params.Set("sort", r.Sort)
 	}
 
 	params.Set("page", strconv.Itoa(r.Page))
